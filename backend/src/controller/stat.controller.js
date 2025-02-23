@@ -2,13 +2,13 @@ import { Song } from '../models/song.model.js';
 import { Album } from '../models/album.model.js';
 import { User } from '../models/user.model.js';
 
-export const getStats = async (req, res) => {
+export const getStats = async (req, res, next) => {
     try {
-        // const totalSong = await Song.countDocuments();
-        // const totalUser = await User.countDocuments();
-        // const totalAlbum = await Album.countDocuments();
+        // const totalSongs = await Song.countDocuments();
+        // const totalUsers = await User.countDocuments();
+        // const totalAlbums = await Album.countDocuments();
     
-        const [totalSong, totalUser, totalAlbum, uniqueArtists] = await Promise.all(
+        const [totalSongs, totalUsers, totalAlbums, uniqueArtists] = await Promise.all(
           [
             Song.countDocuments(),
             User.countDocuments(),
@@ -34,9 +34,9 @@ export const getStats = async (req, res) => {
         );
     
         res.status(200).json({
-          totalSong,
-          totalUser,
-          totalAlbum,
+          totalSongs,
+          totalUsers,
+          totalAlbums,
           uniqueArtists: uniqueArtists[0]?.count || 0,
         });
     
