@@ -4,7 +4,6 @@ import StatsCard from "./StatsCard";
 
 const DashboardStats = () => {
   const { stats } = useMusicStore();
-  console.log("Stats verisi:", stats);
   
   const safeStats = {
     totalSongs: stats?.totalSongs ?? 0,
